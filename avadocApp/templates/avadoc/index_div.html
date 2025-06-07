@@ -1,0 +1,112 @@
+<{% extends "avadoc/base.html" %}
+{% load widget_tweaks %}
+
+{% block corpo %}
+
+    <h3>Docentes</h3>
+     {{ msg }}
+            {% for av in avaliados %}
+                {% if av.user_avadoc == request.user.username %}
+                    <div id="avaliado" class="btn btn-outline-primary mb-2" href=""> {{ av.id_docente }}</div>
+                {% endif %}
+            {% endfor %}
+
+    <main class="row" style="color: rgb(197,1,226);">
+        <a href="">{{ tamanho }}</a>
+
+
+
+
+        {% for diario in docentes %}
+
+
+            <div class="col-lg-3 mb-1 card"
+                 style="border: solid 2px rgb(46,248,160); font-size: x-small; text-align: center;">
+
+
+                <div>
+
+                    <label for="comp">Componente:
+                        <h6 id="comp" style="font-size: small">{{ diario.nome_diario_componente }}</h6>
+                    </label>
+                </div>
+
+                <div>
+                    <label for="diario" class="col-lg-4">
+                        Diário:
+                        <h6 id="diario" style="font-size: small">{{ diario.id_diario }}</h6>
+                    </label>
+
+                    <label for="nivel" class="col-lg-4">Nível:
+                        <h6 id="nivel" style="font-size: small">{{ diario.nivel_diario }}</h6>
+                    </label>
+                </div>
+                <div class="card-header">
+
+                    <label for="prof">Docente:
+                        <h6 id="prof" style="font-size: small">{{ diario.docente_diario }}</h6>
+                    </label>
+                </div>
+
+                <div>
+                    <label for="cod_curso" class="col-lg-6">Código do Curso:
+                        <h6 id="cod_curso" style="font-size: small">{{ diario.cod_curso_diario }}</h6>
+                    </label>
+                    <label for="turma" class="col-lg-4">Turma:
+                        <h6 id="turma" style="font-size: small">{{ diario.turma_diario }}</h6>
+                    </label>
+                </div>
+                <div>
+                    <label for="curso">Nome do Curso:
+                        <h6 id="curso" style="font-size: small">{{ diario.nome_curso_diario }}</h6>
+                    </label>
+                </div>
+                <div>
+                    <label for="turno">
+                        Turno:<h6 id="turno" style="font-size: small">{{ diario.turno_curso_diario }}</h6>
+                    </label>
+                    <label for="periodo">
+                        Período:<h6 id="periodo" style="font-size: small">{{ diario.periodo_diario }}</h6>
+                    </label>
+                    <label for="campus">
+                        Campus:<h6 id="campus" style="font-size: small">{{ diario.campus_diario }}</h6>
+                    </label>
+                </div>
+
+                <a id="meuLink" href="{% url 'avalia' diario.siape_diario %} " class="btn btn-info "
+                   style="font-size: 10px;">Avaliar </a>
+
+
+                <script>
+                    function desabilitarLink() {
+                        // Obtém os elementos do link pelo ID
+                        var avaliado = document.getElementById("avaliado");
+                        var prof = document.getElementById("prof");
+                        var meuLink = document.getElementById("meuLink");
+
+                        // Verifica se o conteúdo dos elementos avaliado e prof são iguais
+                        if (prof.innerText !== avaliado.innerText) {
+                            // Desativa o link
+                            meuLink.setAttribute("disabled", "true");
+
+                            // Adiciona um estilo para fornecer um feedback visual
+                            meuLink.style.color = "gray"; // Altere a cor conforme necessário
+                            meuLink.style.cursor = "not-allowed";
+
+                            // Remove o manipulador de eventos de clique para evitar múltiplos cliques
+                            meuLink.removeEventListener("click", desabilitarLink);
+                        }
+                    }
+
+                    // Chama a função ao carregar a página
+                    window.onload = desabilitarLink;
+                </script>
+
+            </div>
+            </section>
+
+        {% endfor %}
+    </main>
+
+
+{% endblock corpo %}

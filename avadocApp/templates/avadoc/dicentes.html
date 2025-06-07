@@ -1,0 +1,32 @@
+{%  extends "avadoc/base.html" %}
+
+{% block corpo %}
+<table class="table table-bordered table-striped table-hover table-light container " style="font-size: x-small;">
+    <div>
+
+        <thead class=" text-center  container text-light mt-5 " style="height: 50px; margin-top: 100px;font-size: 12px;">
+        <tr class="" style="margin-top: 60px; margin-left: 110px">
+            <td >ID</td>
+            <td >Matrícula</td>
+            <td >Nome</td>
+            <td >Ação 1</td>
+            <td >Ação 2</td>
+        </tr>
+        </thead>
+
+    </div>
+    <tbody>
+
+    {% for docente in docentes %}
+        <tr>
+            <td >{{ docente.id_docente }}</td>
+            <td >{{ docente.cod_docente }}</td>
+            <td >{{ docente.nome_docente }}</td>
+            <td class="p-1 m-auto"><a href="" class="btn btn-warning" style="font-size: 10px;">Editar</a></td>
+            <td  class="p-1 m-auto"><a href="{% url 'avalia' docente.cod_docente%}" class="btn btn-primary " style="font-size: 10px;">Avaliar</a></td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock corpo%}

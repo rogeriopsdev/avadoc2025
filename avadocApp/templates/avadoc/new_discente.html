@@ -1,0 +1,117 @@
+{% extends "avadoc/base.html" %}
+
+{% block corpo %}
+    {% load crispy_forms_tags %}
+    {% load widget_tweaks %}
+    <div class="container">
+    <h1>
+        Cadastro de Discentes:
+    </h1>
+        <div class="row">
+
+
+            <form method="post" enctype="multipart/form-data" class="col-8 mt-2">
+                {% csrf_token %}
+
+
+                <label for="matricula"> Matricula:
+                    <div id="matricula" class="input-group m-2" style="">
+                        {% render_field form.mat_discente type="text" required="required"%}
+                    </div>
+                </label>
+
+
+                <label for="nome"> Nome:
+                    <div id="nome" class="input-group m-2">
+                        {% render_field form.nome_discente type="text" required="required"%}
+                    </div>
+                </label>
+                <label for="ingresso"> Ano de Ingresso:
+                    <div id="ingresso" class="input-group m-2">
+                        {% render_field form.ingresso_discente type="text" %}
+                    </div>
+                </label>
+                <label for="campus"> Campus:
+                    <div id="campus" class="input-group m-2">
+                        {% render_field form.campus_discente type="text" required="required"%}
+                    </div>
+                </label>
+                <label for="cidade"> Cidade:
+                    <div id="cidade" class="input-group m-2">
+                        {% render_field form.cidade_discente type="text" %}
+                    </div>
+                </label>
+                <label for="curso"> Curso:
+                    <div id="curso" class="input-group m-2">
+                        {% render_field form.curso_discente type="text" required="required"%}
+                    </div>
+                </label>
+                <label for="nascimento"> Data de Nascimento:
+                    <div id="nascimento" class="input-group m-2">
+                        {% render_field form.nascimento_discente type="date" required="required"%}
+                    </div>
+                </label>
+                <label for="desc">Desc Curso:
+                    <div id="desc" class="input-group m-2">
+                        {% render_field form.desc_curso_discente type="text" required="required"%}
+                    </div>
+                </label>
+                <label for="email">E-mail:
+                    <div id="email" class="input-group m-2">
+                        {% render_field form.email_discente type="email"  %}
+                    </div>
+                </label>
+                <label for="endereco">Endereço:
+                    <div id="endereco" class="input-group m-2">
+                        {% render_field form.endereco_discente type="text" %}
+                    </div>
+                </label>
+                <label for="estado">Estado:
+                    <div id="estado" class="input-group m-2">
+                        {% render_field form.estado_discente type="text" %}
+                    </div>
+                </label>
+                <label for="f_ingresso"> Forma de Ingresso:
+                    <div id="f_ingresso" class="input-group m-2">
+                        {% render_field form.fomr_ing_discente type="text" required="required"%}
+                    </div>
+                </label>
+                <label for="residencia"> Municipio de residencia:
+                    <div id="residencia" class="input-group m-2">
+                        {% render_field form.mun_res_discente type="text" required="required"%}
+                    </div>
+                </label>
+                <label for="natu"> Naturalidade:
+                    <div id="natu" class="input-group m-2">
+                        {% render_field form.naturalidade_discente type="text" %}
+                    </div>
+                </label>
+                <label for="resposavel"> Responsável:
+                    <div id="resposavel" class="input-group m-2">
+                        {% render_field form.resp_discente type="text" required="required"%}
+                    </div>
+                </label>
+                <label for="sexo"> Sexo:
+                    <div id="sexo" class="input-group m-2">
+                        {% render_field form.sexo_discente type="text" required="required" %}
+                    </div>
+                </label>
+                <label for="status"> Status:
+                    <div id="status" class="input-group m-2">
+                        {% render_field form.status_discente type="text" %}
+                    </div>
+                </label>
+                <label for="fone"> Telefone:
+                    <div id="fone" class="input-group m-2">
+                        {% render_field form.tel_discente type="tel" %}
+                    </div>
+                </label>
+                <div class="mt-5">
+                    <input type="submit" value="Salvar" class="btn btn-outline-primary mt-5 input-group">
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+{% endblock corpo %}

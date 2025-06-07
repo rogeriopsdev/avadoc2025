@@ -1,0 +1,37 @@
+{% extends "avadoc/base.html" %}
+
+{% block corpo %}
+
+    <table class="table table container " style="font-size: x-small ">
+        <div>
+
+            <thead class=" text-center  container text-light mt-5 "
+                   style="height: 50px; margin-top: 100px;font-size: 12px;">
+            <tr class="fixed-top" style="margin-top: 60px; margin-left: 110px">
+                <td style="width: 100px;text-align: center;">Codigo Campi</td>
+                <td style="width:300px;">Nome</td>
+                <td style="width:300px;">Editar</td>
+                <td style="width:300px; ">Vincular</td>
+            </tr>
+            </thead>
+
+        </div>
+        <tbody>
+        <tr style="height: 50px; margin-top: 100px;">
+
+        </tr>
+        {% for campus in compi %}
+            <tr>
+                <td style="width: 100px; text-align: center;">{{ campus.cod_campi }}</td>
+                <td style="width: 300px;">{{ campus.nome_campi }}</td>
+                <td style="width: 20px; " class="p-1 m-auto"><a href="" class="btn btn-warning"
+                                                                style="font-size: 10px;">Editar</a></td>
+                <td style="width: 20px; " class="p-1 m-auto"><a href="" class="btn btn-primary "
+                                                                style="font-size: 10px;">...</a></td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock corpo %}
+

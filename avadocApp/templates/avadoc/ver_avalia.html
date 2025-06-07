@@ -1,0 +1,39 @@
+{% extends "avadoc/base.html" %}
+
+{% block corpo %}
+    <h2>Avaliados:</h2>
+    <div class="row ">
+        {% for ava in avas %}
+
+            <div class="col-md-2">
+                <div class="card border-danger  mb-1">
+
+                    <div class="card-body ">
+                        <form method="get">
+                             <div class="card-header">
+                                <label style="font-size: x-small" for="id_ava">Id:
+                                    <div id="id_ava">{{ ava.id_avadoc }}</div>
+                                </label>
+                            </div>
+                            <div class="card-header">
+                                <label style="font-size: x-small" for="docente">Nome:
+                                    <div id="docente">{{ ava.id_docente }}</div>
+                                </label>
+                            </div>
+                            <div class="input-group">
+                                <a href="{% url 'avindividual' ava.id_docente_id %}" name="search"
+                                   class="btn btn-primary input-group "
+                                   style="font-size:small; ">Ver</a>
+                            </div>
+
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+{% endblock corpo %}

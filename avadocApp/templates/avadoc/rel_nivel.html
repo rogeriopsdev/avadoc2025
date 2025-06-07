@@ -1,0 +1,285 @@
+{% extends "avadoc/base_g.html" %}
+
+{% block corpo %}
+
+    <div class="row h-75">
+        <div class="col-lg-6">
+
+
+            <table class="table-striped table container " style="font-size: 10px; ">
+                <div>
+
+                    <thead class=" text-center  container text-light  "
+                           style="height: 50px; font-size: 12px;">
+                    <tr class="table-striped" style=" margin-left: 110px ;font-size: 10px;">
+                        <td style="text-align: center;">Id</td>
+                        <td style="">Assiduidade</td>
+                        <td style="">Pontualidade</td>
+                        <td style=" ">Planejamento</td>
+                        <td style=" ">Realização das Aulas</td>
+                        <td style=" ">Avaliações</td>
+                        <td style=" ">Postura</td>
+                        <td style=" ">Docente</td>
+                        <td style=" ">
+                            <div>
+                                <button id="btnPrint">Imprimir</button>
+
+                                <!-- Outro conteúdo da sua página aqui -->
+
+                                <script>
+                                    // JavaScript para acionar a função de impressão
+                                    document.getElementById('btnPrint').addEventListener('click', function () {
+                                        window.print();
+                                    });
+                                </script>
+                            </div>
+                        </td>
+                        <!--<td style=" "></td>
+                        <td style=""></td>-->
+                    </tr>
+                    </thead>
+
+                </div>
+                <tbody>
+                <tr style="">
+
+                </tr>
+                {% for ava in avas %}
+                    <tr>
+                        <td style=" text-align: center;">{{ ava.id_avadoc }}</td>
+                        <td style="">{{ ava.assid_avadoc }}</td>
+                        <td style="">{{ ava.pont_avadoc }}</td>
+                        <td style="">{{ ava.plan_avadoc }}</td>
+                        <td style="">{{ ava.realiza_avadoc }}</td>
+                        <td style="">{{ ava.avaliacao_avadoc }}</td>
+                        <td style="">{{ ava.postura_avadoc }}</td>
+                        <td style="">{{ ava.id_docente }}</td>
+
+
+                        <!--<td style="width: 180px; " class="p-1 m-auto"><a href="" class="btn btn-warning"
+                                                                         style="font-size: 10px;">Editar</a></td>
+                        <td style="width: 20px; " class="p-1 m-auto"><a href="" class="btn btn-primary "
+                                                                        style="font-size: 10px;">...</a></td>-->
+                        <!--<a href="">{{ava.id_docente  }}</a>!-->
+
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-lg-4">
+            <canvas id="myChart"></canvas>
+
+
+            <script>
+                const ctx = document.getElementById('myChart');
+                ctx.height = 100;
+
+                new Chart(ctx, {
+                    type: 'polarArea',
+
+                    data: {
+                        labels: ['Assiduidades', 'Pontualidade', 'Planejaemnto', 'Realização de Aulas', 'Avaliaçoes', 'Postura'],
+                        datasets: [{
+                            axis: 'y',
+                            label: '# Avaliação Docente',
+                            data: [
+                                {{assi_total}},
+                                {{pontulidade}},
+                                {{planejamento}},
+                                {{aulas}},
+                                {{avaliacao}},
+                                {{postura}},],
+                            fill: false,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(255, 205, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(201, 203, 207, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(255, 159, 64)',
+                                'rgb(255, 205, 86)',
+                                'rgb(75, 192, 192)',
+                                'rgb(54, 162, 235)',
+                                'rgb(153, 102, 255)',
+                                'rgb(201, 203, 207)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="row h-20">
+        <div class="col-lg-5">
+            <canvas id="myChart_m"></canvas>
+
+
+            <div class="container">
+
+                <script>
+                    const ctx_m = document.getElementById('myChart_m');
+                    ctx_m.height = 100;
+
+                    new Chart(ctx_m, {
+                        type: 'bar',
+
+                        data: {
+                            labels: ['Assiduidades', 'Pontualidade', 'Planejamento', 'Realização de Aulas', 'Avaliaçoes', 'Postura'],
+                            datasets: [{
+                                axis: 'y',
+                                label: '# Média Avaliação Docente',
+                                data: [
+                                    {{m_assiduidade}},
+                                    {{m_pontualidade}},
+                                    {{m_planejamento}},
+                                    {{m_aulas}},
+                                    {{m_avaliacao}},
+                                    {{m_postura}},],
+                                fill: false,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 205, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(201, 203, 207, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgb(255, 99, 132)',
+                                    'rgb(255, 159, 64)',
+                                    'rgb(255, 205, 86)',
+                                    'rgb(75, 192, 192)',
+                                    'rgb(54, 162, 235)',
+                                    'rgb(153, 102, 255)',
+                                    'rgb(201, 203, 207)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <canvas id="myChart_qtd"></canvas>
+
+
+            <div class="container">
+
+                <script>
+                    const ctx_qtd = document.getElementById('myChart_qtd');
+                    ctx_qtd.height = 100;
+
+                    new Chart(ctx_qtd, {
+                        type: 'line',
+
+                        data: {
+                            labels: ['Avliações', 'Media'],
+                            datasets: [{
+                                axis: 'y',
+                                label: 'Resumo',
+                                data: [
+                                    {{qt}},
+                                    {{ m_geral }}
+
+                                ],
+                                fill: true,
+
+                                backgroundColor:
+                                    [
+                                        'rgba(201, 203, 207, 0.2)',
+                                    ],
+
+                                borderColor:
+                                    [
+
+                                        'rgb(201, 203, 207)',
+                                    ],
+
+                                borderWidths:
+                                    1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    })
+                    ;
+                </script>
+            </div>
+        </div>
+        <div class="col-lg-3 row  ">
+            <div class="col-lg-6">
+            <h6 style="font-size: small">Assiduidade : {{ assi_total }} pontos</h6>
+            <h6 style="font-size: small">Pontualidade : {{ planejamento }} pontos</h6>
+            <h6 style="font-size: small">Planejamento : {{ planejamento }} pontos</h6>
+                </div>
+            <div class="col-lg-6">
+
+
+            <h6 style="font-size: small">Realização de Aulas: {{ aulas }} pontos</h6>
+            <h6 style="font-size: small">Avaliações: {{ avaliacao }} pontos</h6>
+            <h6 style="font-size: small">Postura: {{ postura }} pontos</h6>
+            <h6 style="font-size: small">Total de Avaliações: {{ qt }}</h6>
+                </div>
+
+
+        </div>
+        <div class="bg-gradient-primary-to-secondary text-light">
+            {% for t in turmas %}
+            <div class="card">
+                <div class="card-body bg-gradient-primary-to-secondary text-light">
+                    <div class="card-header">
+                        {{ t }}
+                    </div>
+
+                </div>
+
+            </div>
+              {% endfor %}
+
+        </div>
+
+<div class="bg-info">
+    {{ diario }}
+</div>
+
+    <div class="bg-danger text-light">
+    {{ turmas}}
+</div>
+
+    </div>
+
+
+
+{% endblock corpo %}>

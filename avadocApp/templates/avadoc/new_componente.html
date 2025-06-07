@@ -1,0 +1,22 @@
+{% extends "avadoc/base.html" %}
+
+{% block corpo %}
+    {% load crispy_forms_tags %}
+    {% load widget_tweaks %}
+    <div class="row-cols-2 container " style="padding-top: 10px;font-size: x-small">
+        <form method="post" enctype="multipart/form-data" class="h-100">
+            {% csrf_token %}
+            <div class="col-lg-6 p-0">
+
+                {{ form|crispy }}
+            </div>
+
+
+            <div class="col-lg-6">
+                <input type="submit" value="Salvar" class="btn bg-success ">
+
+            </div>
+
+        </form>
+    </div>
+{% endblock corpo %}

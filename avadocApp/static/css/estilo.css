@@ -1,0 +1,6 @@
+input:invalid:required {
+  background-image: linear-gradient(to right, pink, lightgreen);
+}
+label{
+  font-width: bold;;
+}

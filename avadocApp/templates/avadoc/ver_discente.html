@@ -1,0 +1,53 @@
+{% extends "avadoc/base.html" %}
+
+{% block corpo %}
+    <div class="row">
+        {% for discente in discentes %}
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card p-3">
+                    <label for='matricula'>Matrícula:</label>
+                    <div id="matricula">{{ discente.mat_discente }}</div>
+
+                    <label for='nome'>Nome:</label>
+                    <div id="nome" class="card-header">{{ discente.nome_discente }}</div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for='ingresso'>Ingresso:</label>
+                            <div id="ingresso">{{ discente.ingresso_discente }}</div>
+                        </div>
+                        <div class="col-6">
+                            <label for='campus'>Campus:</label>
+                            <div id="campus">{{ discente.campus_discente }}</div>
+                        </div>
+                    </div>
+
+                    <label for='status'>Status:</label>
+                    <div id="status">{{ discente.status_discente }}</div>
+
+                    <div class="mt-3">
+                        <label for='curso' style="font-weight: bold">Curso:</label>
+                        <div id="curso">{{ discente.desc_curso_discente }}</div>
+                    </div>
+
+
+                    <!--<td class="p-1 m-auto"><a href="" class="btn btn-warning"
+                                              style="font-size: 10px;">Editar</a></td>-->
+                    <a href="{% url 'index' discente.turma_discente %}" class="btn btn-primary "
+                       style="font-size: 10px;">Vincular</a>
+
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3">
+                {% if request.user.is_superuser == True %}
+                    <a href="{% url 'editar_discente ' discente.id_discente %}"
+                       class="btn btn-outline-warning">Editar</a>
+                {% endif %}
+            </div>
+
+        {% endfor %}
+
+{% endblock corpo %}

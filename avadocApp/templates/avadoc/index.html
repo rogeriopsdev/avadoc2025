@@ -1,0 +1,137 @@
+<{% extends "avadoc/base.html" %}
+{% load widget_tweaks %}
+
+{% block corpo %}
+    <main style="color: rgb(197,1,226);background: #1b1e21">
+        <div style="border: solid 2px rgb(46,248,160)">
+
+
+            <table class="table table-bordered table-striped container" style="font-size: x-small ">
+
+
+                <thead class="text-center  container text-light mt-5  "
+                       style="height: 50px; margin-top: 100px;font-size: x-small;">
+                <tr>
+                    <td>Votar</td>
+                    <td>Id</td>
+                    <td>Código</td>
+                    <td>Sigla Diário</td>
+                    <td>Nome do Componente</td>
+                    <td>Siape</td>
+                    <td>Nível</td>
+                    <td>Docente</td>
+                    <td>CH</td>
+                    <td>CH Aula</td>
+                    <td>Codigo do Curso</td>
+                    <td>Turma</td>
+                    <td>Curso</td>
+                    <td>Turno</td>
+                    <td>Período</td>
+                    <td>Campus</td>
+                    <td>Alunos</td>
+                    <td>Ação 1</td>
+                    <td>Ação 2</td>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+
+                </tr>
+
+                {% for ava in avaliados %}
+                    <a href="">{{ ava.id_doc }}</a>
+                    <a href="">{{ ava.id_docente }}</a>
+                {% endfor %}
+                {% for prof in profs %}
+                    <a href="">{{ prof.id_docente }}</a>
+                {% endfor %}
+
+                {% for diario in docentes %}
+
+
+                    <tr>
+
+
+                        <td><input type="checkbox" id="vote" name="votar"/></td>
+                     <script>
+                           let ck =document.getElementById('vote')
+                           ck.style.background='red'
+                           ck.addEventListener('change',function (){
+                               console.log(this.value())
+                           })
+
+                        </script>
+                        <td>{{ diario.id_diario }}</td>
+                        <td>{{ diario.cod_diario }}</td>
+                        <td>{{ diario.sigla_diario }}</td>
+                        <td>{{ diario.nome_diario_componente }}</td>
+                        <td>{{ diario.siape_diario }}</td>
+                        <td>{{ diario.nivel_diario }}</td>
+                        <td>{{ diario.docente_diario }}</td>
+                        <td>{{ diario.ch_diario }}</td>
+                        <td>{{ diario.ch_aula_diario }}</td>
+                        <td>{{ diario.cod_curso_diario }}</td>
+                        <td>{{ diario.turma_diario }}</td>
+                        <td>{{ diario.nome_curso_diario }}</td>
+                        <td>{{ diario.turno_curso_diario }}</td>
+                        <td>{{ diario.periodo_diario }}</td>
+                        <td>{{ diario.campus_diario }}</td>
+                        <td>{{ diario.qtd_aluno_diario }}</td>
+                        {% if votar == checked %}
+                            <td>
+                                <a href="" class="btn btn-warning" style="font-size: 10px;">Editar</a></td>
+                            <td>
+
+                                <a href="{% url 'avalia' diario.siape_diario %}" class="btn btn-success "
+                                   style="font-size: 10px;">Avaliar</a>
+
+                            </td>
+                        {% else %}
+                            <td>
+                                <button href="" class="btn btn-warning" style="font-size: 10px;" disabled>Editar</button></td>
+                            <td>
+
+                                <button href="{% url 'avalia' diario.siape_diario %}" class="btn btn-success "
+                                   style="font-size: 10px;" disabled>Avaliar</button>
+
+                            </td>
+                            </tr>
+                        {% endif %}
+                {% endfor %}
+                <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+                </div>
+
+                </tbody>
+            </table>
+
+            <div class="row" style="border: solid 2px rgb(255,5,52)">
+                <div class="col-lg-4 ">
+                    <h3>Esquerda linha 2</h3>
+                </div>
+                <div class="col-lg-4">
+                    <h3>Centro linha 1</h3>
+                </div>
+                <div class="col-lg-4 ">
+                    <h3>Direita linha 1</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock corpo %}

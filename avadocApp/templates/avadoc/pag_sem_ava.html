@@ -1,0 +1,21 @@
+{% extends "avadoc/base_g.html" %}
+
+{% block corpo %}
+    {% load crispy_forms_tags %}
+    {% load widget_tweaks %}
+    <div class="row-cols-2 container " style="padding-top: 10px;font-size: x-small">
+
+            <div class="col-lg-6 p-0">
+
+               <h2>Professor(a),{{request.user.last_name}}  você ainda não possui avaliações!</h2>
+            </div>
+
+
+            <div class="col-lg-6">
+                <a class="btn btn-secondary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="{%  url 'home'%} "> Voltar</a>
+
+            </div>
+
+
+    </div>
+{% endblock corpo %}

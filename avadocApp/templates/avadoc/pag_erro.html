@@ -1,0 +1,21 @@
+{% extends "avadoc/base_g.html" %}
+
+{% block corpo %}
+    {% load crispy_forms_tags %}
+    {% load widget_tweaks %}
+    <div class="row-cols-2 container " style="padding-top: 10px;font-size: x-small">
+
+            <div class="col-lg-6 p-0">
+
+               <h2>Prezado Usuário, faça o login para poder acessar a página desejada!</h2>
+            </div>
+
+
+            <div class="col-lg-6">
+                <a href="{%  url 'login'%} "> Logar</a>
+
+            </div>
+
+
+    </div>
+{% endblock corpo %}

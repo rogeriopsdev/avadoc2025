@@ -1,0 +1,391 @@
+{% extends "avadoc/base.html" %}
+
+{% block corpo %}
+    {% load crispy_forms_tags %}
+    {% load widget_tweaks %}
+
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data" class="row">
+
+            {% csrf_token %}
+            <fieldset class="col-lg-6 col-md-8 col-sm-10 mx-auto mt-5 mb-5 p-3" style="border: 1px solid #6f42c1; border-radius: 15px;">
+                <legend>Formulário de Avaliação Docente</legend>
+
+
+                <h6 class="small pb-3">
+                    1. O docente é ASSÍDUO, ou seja, não falta às aulas e quando falta, apresenta justificativa e
+                    promove suas devidas reposições ou anteposições?
+                </h6>
+
+                <label for="nota1" class="btn btn-light" style="font-size: x-small">Nota 1:
+                    <div style="font-size: x-small">
+                        {% render_field form.assid_avadoc type="radio" id="nota1" name="assid" required="required" value="1" class="ASSIDUO"%}
+                    </div>
+                </label>
+                <label for="nota2" class="btn btn-light" style="font-size: x-small">Nota 2:
+                    <div>
+                        {% render_field form.assid_avadoc type="radio" id="nota2" name="assid" value="2" class="ASSIDUO" %}
+                    </div>
+                </label>
+                <label for="nota3" class="btn btn-light" style="font-size: x-small">Nota 3:
+                    <div>
+                        {% render_field form.assid_avadoc type="radio" id="nota3" name="assid" value="3" class="ASSIDUO" %}
+                    </div>
+                </label>
+                <label for="nota4" class="btn btn-light" style="font-size: x-small">Nota 4:
+                    <div>
+                        {% render_field form.assid_avadoc type="radio" id="nota4" name="assid" value="4" class="ASSIDUO" %}
+                    </div>
+                </label>
+                <label for="nota5" class="btn btn-light" onchange style="font-size: x-small">Nota 5:
+                    <div>
+                        {% render_field form.assid_avadoc type="radio"  id="nota5" name="assid" value="5" class="ASSIDUO" %}
+                    </div>
+                </label>
+                <label for="nota6" class="btn btn-light" style="font-size: x-small">Nota 6:
+                    <div>
+                        {% render_field form.assid_avadoc type="radio" id="nota6" name="assid" value="6" class="ASSIDUO" %}
+                    </div>
+                </label>
+                <label for="nota7" class="btn btn-light" style="font-size: x-small">Nota 7:
+                    <div>
+                        {% render_field form.assid_avadoc type="radio" id="nota7" name="assid" value="8" class="ASSIDUO" %}
+                    </div>
+                </label>
+                <label for="nota8" class="btn btn-light" style="font-size: x-small">Nota 8:
+                    <div>
+                        {% render_field form.assid_avadoc type="radio" id="nota8" name="assid" value="8" %}
+                    </div>
+                </label>
+                <label for="nota9" class="btn btn-light" style="font-size: x-small">Nota 9:
+                    <div>
+                        {% render_field form.assid_avadoc type="radio" id="nota9" name="assid" value="9" %}
+                    </div>
+                </label>
+
+                <label for="nota10" class="btn btn-light" style="font-size: x-small">Nota 10:
+                    <div>
+                        {% render_field form.assid_avadoc type="radio" id="nota10" name="assid" value="10" %}
+                    </div>
+                </label>
+
+                <!--   -----------------------------Pontualidade-------------- -->
+
+                <h6 class="small pb-3 pt-3">
+                    2. O docente é PONTUAL, ou seja, não chega atrasado ou libera a turma mais cedo?
+                </h6>
+
+                <label for="nota11" class="btn btn-light" style="font-size: x-small">Nota 1:
+                    <div>
+                        {% render_field form.pont_avadoc type="radio" id="nota11" name="pontualidade" value="1"  required="required"%}
+                    </div>
+                </label>
+                <label for="nota12" class="btn btn-light" style="font-size: x-small">Nota 2:
+                    <div>
+                        {% render_field form.pont_avadoc type="radio" id="nota12" name="pontualidade" value="2" %}
+                    </div>
+                </label>
+                <label for="nota13" class="btn btn-light" style="font-size: x-small">Nota 3:
+                    <div>
+                        {% render_field form.pont_avadoc type="radio" id="nota13" name="pontualidade" value="3" %}
+                    </div>
+                </label>
+                <label for="nota14" class="btn btn-light" style="font-size: x-small">Nota 4:
+                    <div>
+                        {% render_field form.pont_avadoc type="radio" id="nota14" name="pontualidade" value="4" %}
+                    </div>
+                </label>
+                <label for="nota15" class="btn btn-light" style="font-size: x-small">Nota 5:
+                    <div>
+                        {% render_field form.pont_avadoc type="radio" id="nota15" name="pontualidade" value="5" %}
+                    </div>
+                </label>
+                <label for="nota16" class="btn btn-light" style="font-size: x-small">Nota 6:
+                    <div>
+                        {% render_field form.pont_avadoc type="radio" id="nota16" name="pontualidade" value="6" %}
+                    </div>
+                </label>
+                <label for="nota17" class="btn btn-light" style="font-size: x-small">Nota 7:
+                    <div>
+                        {% render_field form.pont_avadoc type="radio" id="nota17" name="pontualidade" value="8" %}
+                    </div>
+                </label>
+                <label for="nota18" class="btn btn-light" style="font-size: x-small">Nota 8:
+                    <div>
+                        {% render_field form.pont_avadoc type="radio" id="nota18" name="pontualidade" value="8" %}
+                    </div>
+                </label>
+                <label for="nota19" class="btn btn-light" style="font-size: x-small">Nota 9:
+                    <div>
+                        {% render_field form.pont_avadoc type="radio" id="nota19" name="pontualidade" value="9" %}
+                    </div>
+                </label>
+
+                <label for="nota20" class="btn btn-light" style="font-size: x-small">Nota 10:
+                    <div>
+                        {% render_field form.pont_avadoc type="radio" id="nota20" name="pontualidade" value="10" %}
+                    </div>
+                </label>
+
+
+                <!-- ------------------------------------- -->
+
+                <h6 class="small pb-3 pt-3">
+                    3. O docente apresenta seu plano de ensino (PLANEJAMENTO) no início do semestre ou
+                    ano letivo, indicando a ementa, competências e habilidades, recursos didáticos que serão
+                    utilizados, formas de avaliações, referências bibliográficas?
+                </h6>
+
+                <label for="nota21" class="btn btn-light" style="font-size: x-small">Nota 1:
+                    <div>
+                        {% render_field form.plan_avadoc type="radio" id="nota21" name="planejamento" value="1" required="required" %}
+                    </div>
+                </label>
+                <label for="nota22" class="btn btn-light" style="font-size: x-small">Nota 2:
+                    <div>
+                        {% render_field form.plan_avadoc type="radio" id="nota22" name="planejamento" value="2" %}
+                    </div>
+                </label>
+                <label for="nota23" class="btn btn-light" style="font-size: x-small">Nota 3:
+                    <div>
+                        {% render_field form.plan_avadoc type="radio" id="nota23" name="planejamento" value="3" %}
+                    </div>
+                </label>
+                <label for="nota24" class="btn btn-light" style="font-size: x-small">Nota 4:
+                    <div>
+                        {% render_field form.plan_avadoc type="radio" id="nota24" name="planejamento" value="4" %}
+                    </div>
+                </label>
+                <label for="nota25" class="btn btn-light" style="font-size: x-small">Nota 5:
+                    <div>
+                        {% render_field form.plan_avadoc type="radio" id="nota25" name="planejamento" value="5" %}
+                    </div>
+                </label>
+                <label for="nota26" class="btn btn-light" style="font-size: x-small">Nota 6:
+                    <div>
+                        {% render_field form.plan_avadoc type="radio" id="nota26" name="planejamento" value="6" %}
+                    </div>
+                </label>
+                <label for="nota27" class="btn btn-light" style="font-size: x-small">Nota 7:
+                    <div class="small">
+                        {% render_field form.plan_avadoc type="radio" id="nota27" name="planejamento" value="8" %}
+                    </div>
+                </label>
+                <label for="nota28" class="btn btn-light" style="font-size: x-small">Nota 8:
+                    <div class="small">
+                        {% render_field form.plan_avadoc type="radio" id="nota28" name="planejamento" value="8" %}
+                    </div>
+                </label>
+                <label for="nota29" class="btn btn-light" style="font-size: x-small">Nota 9:
+                    <div class="small">
+                        {% render_field form.plan_avadoc type="radio" id="nota29" name="planejamento" value="9" %}
+                    </div>
+                </label>
+
+                <label for="nota30" class="btn btn-light" style="font-size: x-small">Nota 10:
+                    <div class="small">
+                        {% render_field form.plan_avadoc type="radio" id="nota30" name="planejamento" value="10" %}
+                    </div>
+                </label>
+
+
+                <!-- ------------------------------------->
+                <h6 class="small pb-3 pt-3">
+                    4. O docente na REALIZAÇÃO de suas aulas procura contextualizar os conteúdos
+                    trabalhados; domina o conteúdo; utiliza bem os recursos didáticos; possui fala(dicção)
+                    clara, coerente e fluente?
+                </h6>
+
+                <label for="nota31" class="btn btn-light" style="font-size: x-small">Nota 1:
+                    <div class="small">
+                        {% render_field form.realiza_avadoc type="radio" id="nota31" name="realizacao" value="1" required="required" %}
+                    </div>
+                </label>
+                <label for="nota32" class="btn btn-light" style="font-size: x-small">Nota 2:
+                    <div class="small">
+                        {% render_field form.realiza_avadoc type="radio" id="nota32" name="realizacao" value="2" %}
+                    </div>
+                </label>
+                <label for="nota33" class="btn btn-light" style="font-size: x-small">Nota 3:
+                    <div class="small">
+                        {% render_field form.realiza_avadoc type="radio" id="nota33" name="realizacao" value="3" %}
+                    </div>
+                </label>
+                <label for="nota34" class="btn btn-light" style="font-size: x-small">Nota 4:
+                    <div class="small">
+                        {% render_field form.realiza_avadoc type="radio" id="nota34" name="realizacao" value="4" %}
+                    </div>
+                </label>
+                <label for="nota35" class="btn btn-light" style="font-size: x-small">Nota 5:
+                    <div class="small">
+                        {% render_field form.realiza_avadoc type="radio" id="nota35" name="realizacao" value="5" %}
+                    </div>
+                </label>
+                <label for="nota36" class="btn btn-light" style="font-size: x-small">Nota 6:
+                    <div class="small">
+                        {% render_field form.realiza_avadoc type="radio" id="nota36" name="realizacao" value="6" %}
+                    </div>
+                </label>
+                <label for="nota37" class="btn btn-light" style="font-size: x-small">Nota 7:
+                    <div class="small">
+                        {% render_field form.realiza_avadoc type="radio" id="nota37" name="realizacao" value="8" %}
+                    </div>
+                </label>
+                <label for="nota38" class="btn btn-light" style="font-size: x-small">Nota 8:
+                    <div class="small">
+                        {% render_field form.realiza_avadoc type="radio" id="nota38" name="realizacao" value="8" %}
+                    </div>
+                </label>
+                <label for="nota39" class="btn btn-light" style="font-size: x-small">Nota 9:
+                    <div class="small">
+                        {% render_field form.realiza_avadoc type="radio" id="nota39" name="realizacao" value="9" %}
+                    </div>
+                </label>
+
+                <label for="nota40" class="btn btn-light" style="font-size: x-small">Nota 10:
+                    <div class="small">
+                        {% render_field form.realiza_avadoc type="radio" id="nota40" name="realizacao" value="10" %}
+                    </div>
+                </label>
+
+
+                <!-- --------------------------- -->
+                <h6 class="small pb-3 pt-3">
+                    5. O docente nas AVALIAÇÕES mostra coerência entre o que foi ensinado e o que é
+                    exigido do estudante, entrega as avaliações e comenta os resultados, auxilia no processo
+                    de recuperação daqueles conteúdos não apreendidos?
+                </h6>
+
+                <label for="nota41" class="btn btn-light" style="font-size: x-small">Nota 1:
+                    <div class="small">
+                        {% render_field form.avaliacao_avadoc type="radio" id="nota41" name="avaliacao" value="1" required="required" %}
+                    </div>
+                </label>
+                <label for="nota42" class="btn btn-light" style="font-size: x-small">Nota 2:
+                    <div class="small">
+                        {% render_field form.avaliacao_avadoc type="radio" id="nota42" name="avaliacao" value="2" %}
+                    </div>
+                </label>
+                <label for="nota43" class="btn btn-light" style="font-size: x-small">Nota 3:
+                    <div class="small">
+                        {% render_field form.avaliacao_avadoc type="radio" id="nota43" name="avaliacao" value="3" %}
+                    </div>
+                </label>
+                <label for="nota44" class="btn btn-light" style="font-size: x-small">Nota 4:
+                    <div class="small">
+                        {% render_field form.avaliacao_avadoc type="radio" id="nota44" name="avaliacao" value="4" %}
+                    </div>
+                </label>
+                <label for="nota45" class="btn btn-light" style="font-size: x-small">Nota 5:
+                    <div class="small">
+                        {% render_field form.avaliacao_avadoc type="radio" id="nota45" name="avaliacao" value="5" %}
+                    </div>
+                </label>
+                <label for="nota46" class="btn btn-light" style="font-size: x-small">Nota 6:
+                    <div class="small">
+                        {% render_field form.avaliacao_avadoc type="radio" id="nota46" name="avaliacao" value="6" %}
+                    </div>
+                </label>
+                <label for="nota47" class="btn btn-light" style="font-size: x-small">Nota 7:
+                    <div class="small">
+                        {% render_field form.avaliacao_avadoc type="radio" id="nota47" name="avaliacao" value="8" %}
+                    </div>
+                </label>
+                <label for="nota48" class="btn btn-light" style="font-size: x-small">Nota 8:
+                    <div class="small">
+                        {% render_field form.avaliacao_avadoc type="radio" id="nota48" name="avaliacao" value="8" %}
+                    </div>
+                </label>
+                <label for="nota49" class="btn btn-light" style="font-size: x-small">Nota 9:
+                    <div class="small">
+                        {% render_field form.avaliacao_avadoc type="radio" id="nota49" name="avaliacao" value="9" %}
+                    </div>
+                </label>
+
+                <label for="nota50" class="btn btn-light" style="font-size: x-small">Nota 10:
+                    <div class="small">
+                        {% render_field form.avaliacao_avadoc type="radio" id="nota50" name="avaliacao" value="10" %}
+                    </div>
+                </label>
+
+
+                <!-- ------------------------ -->
+
+                <h6 class="small pb-3 pt-3">
+                    6. O docente apresenta uma POSTURA adequada ao cargo e responsabilidade que ocupa?
+                </h6>
+
+                <label for="nota51" class="btn btn-light" style="font-size: x-small">Nota 1:
+                    <div class="small">
+                        {% render_field form.postura_avadoc type="radio" id="nota51" name="postura" value="1"  required="required"%}
+                    </div>
+                </label>
+                <label for="nota52" class="btn btn-light" style="font-size: x-small">Nota 2:
+                    <div class="small">
+                        {% render_field form.postura_avadoc type="radio" id="nota52" name="postura" value="2" %}
+                    </div>
+                </label>
+                <label for="nota53" class="btn btn-light" style="font-size: x-small">Nota 3:
+                    <div class="small">
+                        {% render_field form.postura_avadoc type="radio" id="nota53" name="postura" value="3" %}
+                    </div>
+                </label>
+                <label for="nota54" class="btn btn-light" style="font-size: x-small">Nota 4:
+                    <div class="small">
+                        {% render_field form.postura_avadoc type="radio" id="nota54" name="postura" value="4" %}
+                    </div>
+                </label>
+                <label for="nota55" class="btn btn-light" style="font-size: x-small">Nota 5:
+                    <div class="small">
+                        {% render_field form.postura_avadoc type="radio" id="nota55" name="postura" value="5" %}
+                    </div>
+                </label>
+                <label for="nota56" class="btn btn-light" style="font-size: x-small">Nota 6:
+                    <div class="small">
+                        {% render_field form.postura_avadoc type="radio" id="nota56" name="postura" value="6" %}
+                    </div>
+                </label>
+                <label for="nota57" class="btn btn-light" style="font-size: x-small">Nota 7:
+                    <div class="small">
+                        {% render_field form.postura_avadoc type="radio" id="nota57" name="postura" value="8" %}
+                    </div>
+                </label>
+                <label for="nota58" class="btn btn-light" style="font-size: x-small">Nota 8:
+                    <div class="small">
+                        {% render_field form.postura_avadoc type="radio" id="nota58" name="postura" value="8" %}
+                    </div>
+                </label>
+                <label for="nota59" class="btn btn-light" style="font-size: x-small">Nota 9:
+                    <div class="small">
+                        {% render_field form.postura_avadoc type="radio" id="nota59" name="postura" value="9" %}
+                    </div>
+                </label>
+
+                <label for="nota60" class="btn btn-light" style="font-size: x-small">Nota 10:
+                    <div class="small">
+                        {% render_field form.postura_avadoc type="radio" id="nota60" name="postura" value="10" %}
+                    </div>
+                </label>
+            </fieldset>
+
+            <div class="pt-1 col-lg-6 col-md-8 col-sm-10 mx-auto mt-5 mb-5">
+                {% for p in p_ava %}
+                    {{ p.id_doc }}
+                    {{ p.user_avadoc }}
+                {% endfor %}
+                {% if form.cod_docente == p_ava.id_doc and p_ava.user_avadoc == request.user.username %}
+                    <button disabled class="btn bg-secondary p-3 mb-5">Avaliar</button>
+                {% else %}
+                    <input type="submit" value="Avaliar" class="btn btn-success input-group p-3 mb-5">
+                {% endif %}
+
+                <button disabled class="btn btn-outline-info">{{ form.id_docente }}</button>
+            </div>
+
+            {% if form.errors %}
+                <p>Houve erros no formulário. Corrija-os antes de enviar.</p>
+            {% endif %}
+        </form>
+    </div>
+
+{% endblock corpo %}

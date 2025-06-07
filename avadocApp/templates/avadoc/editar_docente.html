@@ -1,0 +1,39 @@
+{% extends "avadoc/base.html" %}
+
+{% block corpo %}
+    {% load crispy_forms_tags %}
+    {% load widget_tweaks %}
+
+    <div class="container">
+        <h1>
+            Editar Docentes:
+        </h1>
+
+
+
+        <form method="post" enctype="multipart/form-data" class="col-8 mt-2">
+            {% csrf_token %}
+            <div class="row">
+
+                <label for="matricula"> Matricula:
+                    <div id="matricula" class="input-group m-2 " style="">
+                        {% render_field form.cod_docente type="text" class='col-3' required="required" %}
+                    </div>
+                </label>
+
+
+                <label for="nome"> Nome:
+                    <div id="nome" class="input-group m-2">
+                        {% render_field form.nome_docente type="text" class="col-12" required="required" %}
+                    </div>
+                </label>
+
+                <div class="mt-5">
+                    <input type="submit" value="Salvar" class="btn btn-outline-primary mt-5 input-group">
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock corpo %}
