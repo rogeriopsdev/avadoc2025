@@ -108,11 +108,16 @@ WSGI_APPLICATION = 'avadoc.wsgi.application'
     #}
 #}
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get("DATABASE_URL"),
-        conn_max_age=600,  # mantém conexões abertas por mais tempo
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'postgresql://postgres:KHisXMTxzORwdvvIBfhMZDjATbqmzKEC@switchback.proxy.rlwy.net:33693/railway',
+        'HOST': 'turntable.proxy.rlwy.net',
+        'PORT': '36770',
+    }
 }
+
 
 
 # Password validation
